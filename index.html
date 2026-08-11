@@ -127,17 +127,38 @@ const yesBtn = document.getElementById("yesBtn");
 const question = document.getElementById("question");
 const success = document.getElementById("success");
 
+const noMessages = [
+    "No 😅",
+    "Are you sure? 🥺",
+    "Really? 😭",
+    "Think again! 😏",
+    "Nice try! 😂",
+    "Nope! ❤️",
+    "You can't escape! 😜",
+    "Try again! 🥰"
+];
+
+let noCount = 0;
+
 function moveNoButton() {
 
     const maxX = window.innerWidth - noBtn.offsetWidth - 20;
     const maxY = window.innerHeight - noBtn.offsetHeight - 20;
 
-    const x = Math.random() * maxX;
-    const y = Math.random() * maxY;
+    const x = Math.max(10, Math.random() * maxX);
+    const y = Math.max(10, Math.random() * maxY);
+    noCount++;
+noBtn.innerText = noMessages[noCount % noMessages.length];
+    
+    
 
     noBtn.style.position = "fixed";
     noBtn.style.left = x + "px";
     noBtn.style.top = y + "px";
+
+    noCount++;
+
+    
 }
 
 noBtn.addEventListener("mouseover", moveNoButton);
