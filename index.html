@@ -303,7 +303,7 @@ button {
 
     </div>
 <script>
-const noBtn = document.getElementById("noBtn");
+      const noBtn = document.getElementById("noBtn");
 const yesBtn = document.getElementById("yesBtn");
 const question = document.getElementById("question");
 const success = document.getElementById("success");
@@ -321,6 +321,11 @@ const chosenFoods = document.getElementById("chosenFoods");
 
 const instagramBtn = document.getElementById("instagramBtn");
 
+
+// ===============================
+// NO BUTTON 😅
+// ===============================
+
 const noMessages = [
     "No 😅",
     "Are you sure? 🥺",
@@ -335,38 +340,48 @@ const noMessages = [
 let noCount = 0;
 
 function moveNoButton() {
+    const maxX = Math.max(10, window.innerWidth - noBtn.offsetWidth - 20);
+    const maxY = Math.max(10, window.innerHeight - noBtn.offsetHeight - 20);
 
-    const maxX = window.innerWidth - noBtn.offsetWidth - 20;
-    const maxY = window.innerHeight - noBtn.offsetHeight - 20;
-
-    const x = Math.max(10, Math.random() * maxX);
-    const y = Math.max(10, Math.random() * maxY);
-    noCount++;
-noBtn.innerText = noMessages[noCount % noMessages.length];
-    
-    
+    const x = Math.random() * maxX;
+    const y = Math.random() * maxY;
 
     noBtn.style.position = "fixed";
     noBtn.style.left = x + "px";
     noBtn.style.top = y + "px";
 
-    noCount++;
+    noBtn.innerText = noMessages[noCount % noMessages.length];
 
-    
+    noCount++;
 }
 
 noBtn.addEventListener("mouseover", moveNoButton);
 noBtn.addEventListener("touchstart", moveNoButton);
 noBtn.addEventListener("click", moveNoButton);
 
+
+// ===============================
+// YES BUTTON ❤️
+// ===============================
+
 yesBtn.addEventListener("click", function() {
+
     question.style.display = "none";
     success.style.display = "none";
     datePage.style.display = "block";
 
-    for(let i = 0; i < 30; i++) {
+    for (let i = 0; i < 30; i++) {
         createHeart();
-    }nextDateBtn.addEventListener("click", function() {
+    }
+
+});
+
+
+// ===============================
+// DATE SELECTION 📅
+// ===============================
+
+nextDateBtn.addEventListener("click", function() {
 
     const selectedDate = dateInput.value;
 
@@ -381,6 +396,12 @@ yesBtn.addEventListener("click", function() {
     chosenDate.innerText = selectedDate;
 
 });
+
+
+// ===============================
+// FOOD SELECTION 🍽️
+// ===============================
+
 foodBtn.addEventListener("click", function() {
 
     const selectedFoods = [];
@@ -400,23 +421,58 @@ foodBtn.addEventListener("click", function() {
     finalPage.style.display = "block";
 
     chosenFoods.innerText = selectedFoods.join(", ");
+
+    window.selectedFoods = selectedFoods;
+
 });
-    
+
+
+// ===============================
+// INSTAGRAM BUTTON 💌
+// ===============================
+
 instagramBtn.addEventListener("click", async function() {
 
-    const message = `Hey 😌❤️ I guess our date is officially booked for ${dateInput.value} 😂🌹
+    const foodList = window.selectedFoods
+        ? window.selectedFoods.join(", ")
+        : "Surprise me 😏";
+
+    const message =
+`Hey 😌❤️
+
+I guess our date is officially booked for ${dateInput.value} 😂🌹
+
+Food plan: ${foodList} 🍽️❤️
+
 No backing out now... you said YES! 😏❤️
+
 So, when are you taking me out? 👀`;
 
     try {
+
         await navigator.clipboard.writeText(message);
-        alert("Your message is copied! ❤️ Now just open Instagram and paste it into my DM 😌");
+
+        alert(
+            "Message copied! ❤️ Opening Instagram..."
+        );
+
     } catch (error) {
-        alert("Please copy the message manually ❤️");
+
+        alert(
+            "Please copy the message manually ❤️"
+        );
+
     }
 
-        window.location.href = "https://www.instagram.com/_allabout.arup_/";
+    window.location.href =
+        "https://www.instagram.com/_allabout.arup_/";
+
 });
+
+
+// ===============================
+// FALLING HEARTS ❤️
+// ===============================
 
 function createHeart() {
 
@@ -424,17 +480,23 @@ function createHeart() {
 
     heart.className = "heart";
     heart.innerHTML = "❤️";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.animationDuration = (3 + Math.random() * 4) + "s";
-    heart.style.fontSize = (15 + Math.random() * 25) + "px";
+
+    heart.style.left =
+        Math.random() * 100 + "vw";
+
+    heart.style.animationDuration =
+        (3 + Math.random() * 4) + "s";
+
+    heart.style.fontSize =
+        (15 + Math.random() * 25) + "px";
 
     document.body.appendChild(heart);
 
-    setTimeout(() => {
+    setTimeout(function() {
         heart.remove();
     }, 7000);
-}
 
+}  
     
 </script>
 
