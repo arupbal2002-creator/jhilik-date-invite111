@@ -104,7 +104,41 @@ button {
 #datePage {
     display: none;
 }
+#foodPage {
+    display: none;
+}
 
+.food-options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 20px 0;
+}
+
+.food-options label {
+    background: #fff0f5;
+    padding: 14px;
+    border-radius: 15px;
+    font-size: 18px;
+    cursor: pointer;
+    text-align: left;
+}
+
+.food-options input {
+    margin-right: 10px;
+    transform: scale(1.3);
+}
+
+#foodBtn {
+    padding: 14px 28px;
+    border: none;
+    border-radius: 30px;
+    background: #ff3570;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
 #datePage h1 {
     font-size: 30px;
     margin-bottom: 25px;
@@ -200,6 +234,42 @@ button {
     <button id="nextDateBtn">Next ❤️</button>
 
 </div>
+    <div class="container" id="foodPage">
+    <h1>Now the important question... 😏❤️</h1>
+
+    <p>What are we eating on our date? 🍽️</p>
+
+    <div class="food-options">
+
+        <label>
+            <input type="checkbox" value="Momo 🥟">
+            🥟 Momo
+        </label>
+
+        <label>
+            <input type="checkbox" value="Biriyani 🍲">
+            🍲 Biriyani
+        </label>
+
+        <label>
+            <input type="checkbox" value="Pizza 🍕">
+            🍕 Pizza
+        </label>
+
+        <label>
+            <input type="checkbox" value="Chowmein 🍜">
+            🍜 Chowmein
+        </label>
+
+        <label>
+            <input type="checkbox" value="Dessert 🍫">
+            🍫 Dessert
+        </label>
+
+    </div>
+
+    <button id="foodBtn">Okay, let's eat! 😋❤️</button>
+    </div>
     <div class="container" id="finalPage">
 
     <div class="big-heart">❤️</div>
@@ -215,7 +285,9 @@ button {
         <p>📅 Our date:</p>
 
         <h2 id="chosenDate"></h2>
+<p>🍽️ Our food plan:</p>
 
+<h3 id="chosenFoods"></h3>
     </div>
 
     <p class="romantic-message">
@@ -239,6 +311,9 @@ const success = document.getElementById("success");
 const datePage = document.getElementById("datePage");
 const dateInput = document.getElementById("dateInput");
 const nextDateBtn = document.getElementById("nextDateBtn");
+const foodPage = document.getElementById("foodPage");
+const foodBtn = document.getElementById("foodBtn");
+const chosenFoods = document.getElementById("chosenFoods");
 const finalPage = document.getElementById("finalPage");
 const chosenDate = document.getElementById("chosenDate");
 const instagramBtn = document.getElementById("instagramBtn");
@@ -298,9 +373,28 @@ nextDateBtn.addEventListener("click", function() {
     }
 
     datePage.style.display = "none";
-finalPage.style.display = "block";
-
+foodPage.style.display = "block";
 chosenDate.innerText = selectedDate;
+});
+    foodBtn.addEventListener("click", function() {
+
+    const selectedFoods = [];
+
+    document.querySelectorAll(
+        '#foodPage input[type="checkbox"]:checked'
+    ).forEach(function(item) {
+        selectedFoods.push(item.value);
+    });
+
+    if (selectedFoods.length === 0) {
+        alert("Come on... at least choose something to eat! 😂❤️");
+        return;
+    }
+
+    foodPage.style.display = "none";
+    finalPage.style.display = "block";
+
+    window.selectedFoods = selectedFoods;
 });
 instagramBtn.addEventListener("click", async function() {
 
