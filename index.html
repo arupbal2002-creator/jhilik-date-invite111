@@ -2,10 +2,26 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jhilik ❤️ Date Invitation</title>
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Jhilik ❤️ A Little Surprise</title>
+
+<meta name="description"
+      content="Jhilik ❤️ I made a little surprise for you...">
+
+<meta property="og:title"
+      content="Jhilik ❤️ I made a little surprise for you...">
+
+<meta property="og:description"
+      content="Open this little surprise when you have a moment. ❤️">
+
+<meta property="og:type"
+      content="website">
 
 <style>
+
 * {
     box-sizing: border-box;
 }
@@ -17,7 +33,7 @@ body {
     justify-content: center;
     align-items: center;
     font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    background: linear-gradient(135deg,#ff758c,#ff7eb3);
     overflow: hidden;
 }
 
@@ -27,10 +43,10 @@ body {
     max-height: 90vh;
     overflow-y: auto;
     text-align: center;
-    background: rgba(255,255,255,0.96);
+    background: rgba(255,255,255,.96);
     padding: 35px 25px;
     border-radius: 25px;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    box-shadow: 0 15px 40px rgba(0,0,0,.2);
 }
 
 h1 {
@@ -46,7 +62,7 @@ button {
     font-size: 18px;
     font-weight: bold;
     cursor: pointer;
-    transition: 0.2s;
+    transition: .2s;
 }
 
 button:hover {
@@ -68,13 +84,9 @@ button:hover {
 #noBtn {
     background: #eee;
     color: #555;
-    position: relative;
 }
 
-#success,
-#datePage,
-#foodPage,
-#finalPage {
+.hidden {
     display: none;
 }
 
@@ -87,17 +99,20 @@ button:hover {
 }
 
 @keyframes fall {
+
     0% {
         transform: translateY(-100px) rotate(0deg);
         opacity: 1;
     }
+
     100% {
         transform: translateY(110vh) rotate(360deg);
         opacity: 0;
     }
+
 }
 
-/* Calendar */
+/* CALENDAR */
 
 .calendar {
     background: #fff5f8;
@@ -110,7 +125,6 @@ button:hover {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 15px;
 }
 
 .calendar-header h2 {
@@ -132,15 +146,15 @@ button:hover {
 .calendar-weekdays,
 .calendar-days {
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
+    grid-template-columns: repeat(7,1fr);
     gap: 5px;
+    margin-top: 12px;
 }
 
 .calendar-weekdays span {
     font-size: 12px;
     font-weight: bold;
     color: #ff4d6d;
-    padding: 5px 0;
 }
 
 .calendar-days button {
@@ -148,7 +162,6 @@ button:hover {
     background: white;
     color: #555;
     font-size: 15px;
-    min-width: 0;
 }
 
 .calendar-days button.selected {
@@ -159,12 +172,12 @@ button:hover {
 #selectedDateText {
     color: #ff3b6b;
     font-weight: bold;
-    font-size: 17px;
     min-height: 25px;
 }
 
 #nextDateBtn,
-#foodBtn {
+#foodBtn,
+#instagramBtn {
     background: #ff3570;
     color: white;
 }
@@ -190,18 +203,9 @@ button:hover {
     transform: scale(1.3);
 }
 
-#chosenDate {
-    color: #ff4d6d;
-}
-
+#chosenDate,
 #chosenFoods {
     color: #ff3b6b;
-}
-
-#instagramBtn {
-    margin-top: 20px;
-    background: #ff3b6b;
-    color: white;
 }
 
 .romantic-message {
@@ -214,50 +218,52 @@ button:hover {
 
 <body>
 
-<!-- PAGE 1 -->
+<!-- FIRST PAGE -->
 
 <div class="container" id="question">
 
     <h1 id="introText"></h1>
 
     <div class="buttons">
-        <button id="yesBtn">Yes ❤️</button>
-        <button id="noBtn">No 😅</button>
+
+        <button id="yesBtn">
+            Yes ❤️
+        </button>
+
+        <button id="noBtn">
+            No 😅
+        </button>
+
     </div>
-
-</div>
-
-
-<!-- SUCCESS / DATE PAGE -->
-
-<div class="container" id="success">
-
-    <h1>Yaaaay, Jhilik! 🥰❤️</h1>
-
-    <p>I knew you would say yes! 💕</p>
-
-    <p>Our date is officially happening! 🌹✨</p>
 
 </div>
 
 
 <!-- CALENDAR PAGE -->
 
-<div class="container" id="datePage">
+<div class="container hidden" id="datePage">
 
-    <h1>Okay Jhilik... 😏❤️</h1>
+    <h1>
+        Okay Jhilik... 😏❤️
+    </h1>
 
-    <p>When should we go on our date? 📅</p>
+    <p>
+        When should we go on our date? 📅
+    </p>
 
     <div class="calendar">
 
         <div class="calendar-header">
 
-            <button id="prevMonth">‹</button>
+            <button id="prevMonth">
+                ‹
+            </button>
 
             <h2 id="monthYear"></h2>
 
-            <button id="nextMonth">›</button>
+            <button id="nextMonth">
+                ›
+            </button>
 
         </div>
 
@@ -293,52 +299,45 @@ button:hover {
 
 <!-- FOOD PAGE -->
 
-<div class="container" id="foodPage">
+<div class="container hidden" id="foodPage">
 
-    <h1>Now, Jhilik... 😏❤️</h1>
-
-    <p>
-        The MOST important question... 🍽️
-    </p>
+    <h1>
+        Now, Jhilik... 😏❤️
+    </h1>
 
     <p>
-        What are we eating on our date?
+        What are we eating on our date? 🍽️
     </p>
 
     <div class="food-options">
 
         <label>
-            <input
-                type="checkbox"
-                value="Momo 🥟">
+            <input type="checkbox"
+                   value="Momo 🥟">
             🥟 Momo
         </label>
 
         <label>
-            <input
-                type="checkbox"
-                value="Biriyani 🍲">
+            <input type="checkbox"
+                   value="Biriyani 🍲">
             🍲 Biriyani
         </label>
 
         <label>
-            <input
-                type="checkbox"
-                value="Pizza 🍕">
+            <input type="checkbox"
+                   value="Pizza 🍕">
             🍕 Pizza
         </label>
 
         <label>
-            <input
-                type="checkbox"
-                value="Chowmein 🍜">
+            <input type="checkbox"
+                   value="Chowmein 🍜">
             🍜 Chowmein
         </label>
 
         <label>
-            <input
-                type="checkbox"
-                value="Dessert 🍫">
+            <input type="checkbox"
+                   value="Dessert 🍫">
             🍫 Dessert
         </label>
 
@@ -351,54 +350,15 @@ button:hover {
 </div>
 
 
-<!-- FINAL PAGE -->
+<!-- FINAL PAGE
+     IMPORTANT:
+     There is NO final romantic message here.
+     JavaScript creates it only after she reaches this page.
+-->
 
-<div class="container" id="finalPage">
+<div class="container hidden" id="finalPage">
 
-    <div style="font-size:50px;">
-        ❤️
-    </div>
-
-    <h1>
-        DATE ACCEPTED! 🎉
-    </h1>
-
-    <p>
-        Well Jhilik... you said YES, so...
-    </p>
-
-    <h2>
-        NO BACKING OUT NOW! 😏😂
-    </h2>
-
-    <p>
-        📅 Our date:
-    </p>
-
-    <h2 id="chosenDate"></h2>
-
-    <p>
-        🍽️ Our food plan:
-    </p>
-
-    <h3 id="chosenFoods"></h3>
-
-    <p class="romantic-message">
-
-        Okayyy, Jhilik... 🥹❤️
-
-        <br><br>
-
-        So I guess you're officially stuck with me
-        for a date. 😌😂
-
-        <br><br>
-
-        Don't be late...
-
-        I might actually fall for you. 👀💕
-
-    </p>
+    <div id="finalContent"></div>
 
     <button id="instagramBtn">
         💌 Send to Arup
@@ -413,45 +373,39 @@ button:hover {
    ELEMENTS
 ========================= */
 
-const noBtn =
-    document.getElementById("noBtn");
+const question =
+    document.getElementById("question");
 
 const yesBtn =
     document.getElementById("yesBtn");
 
-const question =
-    document.getElementById("question");
-
-const success =
-    document.getElementById("success");
+const noBtn =
+    document.getElementById("noBtn");
 
 const datePage =
     document.getElementById("datePage");
 
-const nextDateBtn =
-    document.getElementById("nextDateBtn");
-
 const foodPage =
     document.getElementById("foodPage");
-
-const foodBtn =
-    document.getElementById("foodBtn");
 
 const finalPage =
     document.getElementById("finalPage");
 
-const chosenDate =
-    document.getElementById("chosenDate");
+const finalContent =
+    document.getElementById("finalContent");
 
-const chosenFoods =
-    document.getElementById("chosenFoods");
+const nextDateBtn =
+    document.getElementById("nextDateBtn");
+
+const foodBtn =
+    document.getElementById("foodBtn");
 
 const instagramBtn =
     document.getElementById("instagramBtn");
 
 
 /* =========================
-   INTRO TYPING
+   INTRO
 ========================= */
 
 const introText =
@@ -464,11 +418,18 @@ let introIndex = 0;
 
 function typeIntro() {
 
-    if (introIndex < introMessage.length) {
+    if (
+        introIndex <
+        introMessage.length
+    ) {
 
-        if (introMessage[introIndex] === "\n") {
+        if (
+            introMessage[introIndex] ===
+            "\n"
+        ) {
 
-            introText.innerHTML += "<br>";
+            introText.innerHTML +=
+                "<br>";
 
         } else {
 
@@ -479,7 +440,10 @@ function typeIntro() {
 
         introIndex++;
 
-        setTimeout(typeIntro, 70);
+        setTimeout(
+            typeIntro,
+            70
+        );
     }
 }
 
@@ -491,6 +455,7 @@ typeIntro();
 ========================= */
 
 const noMessages = [
+
     "No 😅",
     "Are you sure? 🥺",
     "Really? 😭",
@@ -499,6 +464,7 @@ const noMessages = [
     "Nope! ❤️",
     "You can't escape! 😜",
     "Try again! 🥰"
+
 ];
 
 let noCount = 0;
@@ -521,13 +487,16 @@ function moveNoButton() {
             20
         );
 
-    noBtn.style.position = "fixed";
+    noBtn.style.position =
+        "fixed";
 
     noBtn.style.left =
-        Math.random() * maxX + "px";
+        Math.random() *
+        maxX + "px";
 
     noBtn.style.top =
-        Math.random() * maxY + "px";
+        Math.random() *
+        maxY + "px";
 
     noBtn.innerText =
         noMessages[
@@ -555,37 +524,39 @@ noBtn.addEventListener(
 
 
 /* =========================
-   YES BUTTON ❤️
+   YES ❤️
 ========================= */
 
 yesBtn.addEventListener(
     "click",
     function() {
 
-        question.style.display =
-            "none";
+        question.classList.add(
+            "hidden"
+        );
 
-        success.style.display =
-            "none";
-
-        datePage.style.display =
-            "block";
+        datePage.classList.remove(
+            "hidden"
+        );
 
         for (
             let i = 0;
             i < 30;
             i++
         ) {
+
             createHeart();
+
         }
 
         renderCalendar();
+
     }
 );
 
 
 /* =========================
-   CALENDAR 📅
+   CALENDAR
 ========================= */
 
 const calendarDays =
@@ -658,26 +629,20 @@ function renderCalendar() {
         );
 
 
-    /* Empty spaces */
-
     for (
         let i = 0;
         i < firstDay;
         i++
     ) {
 
-        const empty =
+        calendarDays.appendChild(
             document.createElement(
                 "div"
-            );
-
-        calendarDays.appendChild(
-            empty
+            )
         );
+
     }
 
-
-    /* Dates */
 
     for (
         let day = 1;
@@ -690,7 +655,8 @@ function renderCalendar() {
                 "button"
             );
 
-        button.type = "button";
+        button.type =
+            "button";
 
         button.innerText =
             day;
@@ -709,6 +675,7 @@ function renderCalendar() {
             button.classList.add(
                 "selected"
             );
+
         }
 
 
@@ -737,15 +704,20 @@ function renderCalendar() {
                         );
 
                 renderCalendar();
+
             }
         );
 
         calendarDays.appendChild(
             button
         );
+
     }
+
 }
 
+
+/* MONTH NAVIGATION */
 
 prevMonth.addEventListener(
     "click",
@@ -756,9 +728,9 @@ prevMonth.addEventListener(
         );
 
         renderCalendar();
+
     }
 );
-
 
 nextMonth.addEventListener(
     "click",
@@ -769,12 +741,13 @@ nextMonth.addEventListener(
         );
 
         renderCalendar();
+
     }
 );
 
 
 /* =========================
-   NEXT DATE ❤️
+   NEXT DATE
 ========================= */
 
 nextDateBtn.addEventListener(
@@ -788,9 +761,65 @@ nextDateBtn.addEventListener(
             );
 
             return;
+
         }
 
-        chosenDate.innerText =
+        datePage.classList.add(
+            "hidden"
+        );
+
+        foodPage.classList.remove(
+            "hidden"
+        );
+
+    }
+);
+
+
+/* =========================
+   FOOD
+========================= */
+
+foodBtn.addEventListener(
+    "click",
+    function() {
+
+        const foods = [];
+
+        document.querySelectorAll(
+            '#foodPage input[type="checkbox"]:checked'
+        ).forEach(
+            function(item) {
+
+                foods.push(
+                    item.value
+                );
+
+            }
+        );
+
+
+        if (foods.length === 0) {
+
+            alert(
+                "Jhilik... choose at least one! 😂❤️"
+            );
+
+            return;
+
+        }
+
+
+        window.selectedFoods =
+            foods;
+
+
+        /*
+         * THE FINAL MESSAGE IS CREATED
+         * ONLY NOW.
+         */
+
+        const date =
             selectedCalendarDate
                 .toLocaleDateString(
                     "en-US",
@@ -802,93 +831,106 @@ nextDateBtn.addEventListener(
                     }
                 );
 
-        datePage.style.display =
-            "none";
 
-        foodPage.style.display =
-            "block";
-    }
-);
+        finalContent.innerHTML = `
+
+            <div style="font-size:50px;">
+                ❤️
+            </div>
+
+            <h1>
+                DATE ACCEPTED! 🎉
+            </h1>
+
+            <p>
+                Well Jhilik... you said YES, so...
+            </p>
+
+            <h2>
+                NO BACKING OUT NOW! 😏😂
+            </h2>
+
+            <p>
+                📅 Our date:
+            </p>
+
+            <h2 id="finalDate">
+                ${date}
+            </h2>
+
+            <p>
+                🍽️ Our food plan:
+            </p>
+
+            <h3>
+                ${foods.join(", ")}
+            </h3>
+
+            <p class="romantic-message">
+
+                Okayyy, Jhilik... 🥹❤️
+
+                <br><br>
+
+                So I guess you're officially
+                stuck with me for a date. 😌😂
+
+                <br><br>
+
+                Don't be late...
+
+                I might actually fall for you. 👀💕
+
+            </p>
+        `;
 
 
-/* =========================
-   FOOD 🍽️
-========================= */
+        foodPage.classList.add(
+            "hidden"
+        );
 
-foodBtn.addEventListener(
-    "click",
-    function() {
-
-        const selectedFoods = [];
-
-        document.querySelectorAll(
-            '#foodPage input[type="checkbox"]:checked'
-        ).forEach(
-            function(item) {
-
-                selectedFoods.push(
-                    item.value
-                );
-            }
+        finalPage.classList.remove(
+            "hidden"
         );
 
 
-        if (
-            selectedFoods.length === 0
+        for (
+            let i = 0;
+            i < 40;
+            i++
         ) {
 
-            alert(
-                "Come on Jhilik... choose at least one! 😂❤️"
-            );
+            createHeart();
 
-            return;
         }
 
-
-        chosenFoods.innerText =
-            selectedFoods.join(
-                ", "
-            );
-
-        window.selectedFoods =
-            selectedFoods;
-
-        foodPage.style.display =
-            "none";
-
-        finalPage.style.display =
-            "block";
     }
 );
 
 
 /* =========================
-   INSTAGRAM 💌
+   INSTAGRAM
 ========================= */
 
 instagramBtn.addEventListener(
     "click",
     async function() {
 
-        const foodList =
-            window.selectedFoods
-                ? window.selectedFoods.join(
-                    ", "
-                )
-                : "Surprise me 😏";
-
         const date =
             selectedCalendarDate
-                ? selectedCalendarDate
-                    .toLocaleDateString(
-                        "en-US",
-                        {
-                            day: "numeric",
-                            month: "long",
-                            year: "numeric"
-                        }
-                    )
-                : "our date";
+                .toLocaleDateString(
+                    "en-US",
+                    {
+                        day: "numeric",
+                        month: "long",
+                        year: "numeric"
+                    }
+                );
+
+        const foodList =
+            window.selectedFoods.join(
+                ", "
+            );
 
 
         const message =
@@ -917,17 +959,19 @@ So, when are you taking me out? 👀💕`;
             alert(
                 "Please copy the message manually ❤️"
             );
+
         }
 
 
         window.location.href =
             "https://www.instagram.com/_allabout.arup_/";
+
     }
 );
 
 
 /* =========================
-   FALLING HEARTS ❤️
+   FALLING HEARTS
 ========================= */
 
 function createHeart() {
@@ -971,10 +1015,8 @@ function createHeart() {
         },
         7000
     );
+
 }
-
-
-/* Start calendar */
 
 renderCalendar();
 
