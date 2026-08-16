@@ -362,9 +362,8 @@ yesBtn.addEventListener("click", function() {
 
     for(let i = 0; i < 30; i++) {
         createHeart();
-    }
-});
-nextDateBtn.addEventListener("click", function() {
+    }nextDateBtn.addEventListener("click", function() {
+
     const selectedDate = dateInput.value;
 
     if (!selectedDate) {
@@ -373,9 +372,12 @@ nextDateBtn.addEventListener("click", function() {
     }
 
     datePage.style.display = "none";
-foodPage.style.display = "block";
-chosenDate.innerText = selectedDate;
+    foodPage.style.display = "block";
+
+    chosenDate.innerText = selectedDate;
+
 });
+
     foodBtn.addEventListener("click", function() {
 
     const selectedFoods = [];
