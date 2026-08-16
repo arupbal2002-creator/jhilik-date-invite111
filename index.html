@@ -208,7 +208,7 @@ button {
 <body>
 
 <div class="container" id="question">
-    <h1>Will you go on a date with me? ❤️</h1>
+    <h1 id="introText"></h1>
 
     <div class="buttons">
         <button id="yesBtn">Yes ❤️</button>
@@ -497,7 +497,26 @@ function createHeart() {
     }, 7000);
 
 }  
-    
+   // Jhilik typing intro ❤️
+const introText = document.getElementById("introText");
+
+const introMessage = "Jhilik... ❤️\nWill you go on a date with me?";
+
+let introIndex = 0;
+
+function typeIntro() {
+    if (introIndex < introMessage.length) {
+        introText.innerHTML += introMessage[ introIndex ] === "\n"
+            ? "<br>"
+            : introMessage[introIndex];
+
+        introIndex++;
+
+        setTimeout(typeIntro, 70);
+    }
+}
+
+typeIntro(); 
 </script>
 
 </body>
