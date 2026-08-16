@@ -315,14 +315,15 @@ So, when are you taking me out? 👀`;
         alert("Please copy the message manually ❤️");
     }
 
-    window.location.href = "https://www.instagram.com/_allabout.arup_/";
+        window.location.href = "https://www.instagram.com/_allabout.arup_/";
 });
+
+function createHeart() {
 
     const heart = document.createElement("div");
 
     heart.className = "heart";
     heart.innerHTML = "❤️";
-
     heart.style.left = Math.random() * 100 + "vw";
     heart.style.animationDuration = (3 + Math.random() * 4) + "s";
     heart.style.fontSize = (15 + Math.random() * 25) + "px";
@@ -334,6 +335,7 @@ So, when are you taking me out? 👀`;
     }, 7000);
 }
 
+    
 </script>
 
 </body>
