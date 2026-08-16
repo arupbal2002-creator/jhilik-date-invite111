@@ -395,7 +395,7 @@ foodBtn.addEventListener("click", function() {
     foodPage.style.display = "none";
     finalPage.style.display = "block";
 
-    window.selectedFoods = selectedFoods;
+    chosenFoods.innerText = selectedFoods.join(", ");
 });
     
 instagramBtn.addEventListener("click", async function() {
