@@ -202,6 +202,118 @@ button {
 .romantic-message {
     line-height: 1.5;
 }
+    .romantic-message {
+    line-height: 1.5;
+}
+
+/* Romantic Calendar ❤️ */
+
+.calendar {
+    background: #fff5f8;
+    border-radius: 20px;
+    padding: 15px;
+    margin: 20px 0;
+}
+
+/* ...rest of the calendar CSS... */
+
+#selectedDateText {
+    color: #ff3b6b;
+    font-weight: bold;
+    font-size: 17px;
+}
+// Romantic calendar ❤️
+
+const calendarDays = document.getElementById("calendarDays");
+const monthYear = document.getElementById("monthYear");
+const prevMonth = document.getElementById("prevMonth");
+const nextMonth = document.getElementById("nextMonth");
+const selectedDateText = document.getElementById("selectedDateText");
+
+let calendarDate = new Date();
+let selectedCalendarDate = null;
+
+function renderCalendar() {
+
+    calendarDays.innerHTML = "";
+
+    const year = calendarDate.getFullYear();
+    const month = calendarDate.getMonth();
+
+    const firstDay = new Date(year, month, 1).getDay();
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+    monthYear.innerText = new Date(
+        year,
+        month
+    ).toLocaleDateString("en-US", {
+        month: "long",
+        year: "numeric"
+    });
+
+    for (let i = 0; i < firstDay; i++) {
+        const empty = document.createElement("span");
+        calendarDays.appendChild(empty);
+    }
+
+    for (let day = 1; day <= daysInMonth; day++) {
+
+        const button = document.createElement("button");
+
+        button.innerText = day;
+        button.type = "button";
+
+        const thisDate = new Date(year, month, day);
+
+        if (
+            selectedCalendarDate &&
+            thisDate.toDateString() ===
+            selectedCalendarDate.toDateString()
+        ) {
+            button.classList.add("selected");
+        }
+
+        button.addEventListener("click", function() {
+
+            selectedCalendarDate = new Date(
+                year,
+                month,
+                day
+            );
+
+            const formattedDate =
+                selectedCalendarDate.toLocaleDateString(
+                    "en-US",
+                    {
+                        weekday: "long",
+                        day: "numeric",
+                        month: "long",
+                        year: "numeric"
+                    }
+                );
+
+            selectedDateText.innerText =
+                "❤️ Date selected: " + formattedDate;
+
+            renderCalendar();
+        });
+
+        calendarDays.appendChild(button);
+    }
+}
+
+prevMonth.addEventListener("click", function() {
+    calendarDate.setMonth(calendarDate.getMonth() - 1);
+    renderCalendar();
+});
+
+nextMonth.addEventListener("click", function() {
+    calendarDate.setMonth(calendarDate.getMonth() + 1);
+    renderCalendar();
+});
+
+renderCalendar();
+</style>
 </style>
 </head>
 
@@ -227,7 +339,29 @@ button {
 
     <p>When should we go on our date? 📅</p>
 
-    <input type="date" id="dateInput">
+    <div class="calendar" id="calendar">
+
+    <div class="calendar-header">
+        <button id="prevMonth">‹</button>
+        <h2 id="monthYear"></h2>
+        <button id="nextMonth">›</button>
+    </div>
+
+    <div class="calendar-weekdays">
+        <span>Sun</span>
+        <span>Mon</span>
+        <span>Tue</span>
+        <span>Wed</span>
+        <span>Thu</span>
+        <span>Fri</span>
+        <span>Sat</span>
+    </div>
+
+    <div class="calendar-days" id="calendarDays"></div>
+
+</div>
+
+<p id="selectedDateText">Choose a date ❤️</p>
 
     <br>
 
@@ -303,7 +437,7 @@ button {
 
     </div>
 <script>
-      const noBtn = document.getElementById("noBtn");
+const noBtn = document.getElementById("noBtn");
 const yesBtn = document.getElementById("yesBtn");
 const question = document.getElementById("question");
 const success = document.getElementById("success");
@@ -383,12 +517,20 @@ yesBtn.addEventListener("click", function() {
 
 nextDateBtn.addEventListener("click", function() {
 
-    const selectedDate = dateInput.value;
-
-    if (!selectedDate) {
+    if (!selectedCalendarDate) {
         alert("Please choose a date ❤️");
         return;
     }
+
+    const selectedDate = selectedCalendarDate.toLocaleDateString(
+        "en-US",
+        {
+            weekday: "long",
+            day: "numeric",
+            month: "long",
+            year: "numeric"
+        }
+    );
 
     datePage.style.display = "none";
     foodPage.style.display = "block";
@@ -502,7 +644,7 @@ window.addEventListener("DOMContentLoaded", function() {
 
     const introText = document.getElementById("introText");
 
-    const introMessage = "Jhilik... ❤️\nWill you go on a date with me?";
+    const introMessage = "Jhilik... 🙂❤️\nWill you go on a date with me?";
 
     let introIndex = 0;
 
