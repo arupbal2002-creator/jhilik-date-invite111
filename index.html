@@ -498,25 +498,33 @@ function createHeart() {
 
 }  
    // Jhilik typing intro ❤️
-const introText = document.getElementById("introText");
+window.addEventListener("DOMContentLoaded", function() {
 
-const introMessage = "Jhilik... ❤️\nWill you go on a date with me?";
+    const introText = document.getElementById("introText");
 
-let introIndex = 0;
+    const introMessage = "Jhilik... ❤️\nWill you go on a date with me?";
 
-function typeIntro() {
-    if (introIndex < introMessage.length) {
-        introText.innerHTML += introMessage[ introIndex ] === "\n"
-            ? "<br>"
-            : introMessage[introIndex];
+    let introIndex = 0;
 
-        introIndex++;
+    function typeIntro() {
 
-        setTimeout(typeIntro, 70);
+        if (introIndex < introMessage.length) {
+
+            if (introMessage[introIndex] === "\n") {
+                introText.innerHTML += "<br>";
+            } else {
+                introText.innerHTML += introMessage[introIndex];
+            }
+
+            introIndex++;
+
+            setTimeout(typeIntro, 70);
+        }
     }
-}
 
-typeIntro(); 
+    typeIntro();
+});
+
 </script>
 
 </body>
