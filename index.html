@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 
 <meta name="viewport"
@@ -20,6 +21,7 @@
 <meta property="og:type"
       content="website">
 
+
 <style>
 
 * {
@@ -29,206 +31,381 @@
 body {
     margin: 0;
     min-height: 100vh;
+
     display: flex;
     justify-content: center;
     align-items: center;
+
     font-family: Arial, sans-serif;
-    background: linear-gradient(135deg,#ff758c,#ff7eb3);
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff758c,
+            #ff7eb3
+        );
+
     overflow: hidden;
 }
 
+
+/* MAIN CARD */
+
 .container {
+
     width: 90%;
     max-width: 500px;
+
     max-height: 90vh;
     overflow-y: auto;
+
     text-align: center;
-    background: rgba(255,255,255,.96);
+
+    background:
+        rgba(255,255,255,0.96);
+
     padding: 35px 25px;
+
     border-radius: 25px;
-    box-shadow: 0 15px 40px rgba(0,0,0,.2);
+
+    box-shadow:
+        0 15px 40px
+        rgba(0,0,0,0.2);
 }
+
 
 h1 {
+
     color: #ff3b6b;
+
     font-size: 30px;
+
     margin-bottom: 30px;
+
 }
+
 
 button {
+
     border: none;
+
     padding: 14px 28px;
+
     border-radius: 30px;
+
     font-size: 18px;
+
     font-weight: bold;
+
     cursor: pointer;
-    transition: .2s;
+
+    transition: 0.2s;
 }
+
 
 button:hover {
+
     transform: scale(1.05);
+
 }
 
+
+/* YES / NO */
+
 .buttons {
+
     display: flex;
+
     justify-content: center;
+
     gap: 20px;
+
     min-height: 60px;
 }
 
+
 #yesBtn {
+
     background: #ff3b6b;
+
     color: white;
 }
 
+
 #noBtn {
+
     background: #eee;
+
     color: #555;
+
 }
 
+
+/* HIDDEN */
+
 .hidden {
+
     display: none;
 }
 
+
+/* FALLING HEARTS */
+
 .heart {
+
     position: fixed;
+
     color: #ff3b6b;
+
     font-size: 20px;
-    animation: fall 5s linear infinite;
+
+    animation:
+        fall 5s linear infinite;
+
     pointer-events: none;
 }
+
 
 @keyframes fall {
 
     0% {
-        transform: translateY(-100px) rotate(0deg);
+
+        transform:
+            translateY(-100px)
+            rotate(0deg);
+
         opacity: 1;
     }
 
     100% {
-        transform: translateY(110vh) rotate(360deg);
+
+        transform:
+            translateY(110vh)
+            rotate(360deg);
+
         opacity: 0;
     }
 
 }
 
-/* CALENDAR */
+
+/* =========================
+   CALENDAR
+========================= */
 
 .calendar {
+
     background: #fff5f8;
+
     border-radius: 20px;
+
     padding: 15px;
+
     margin: 20px 0;
 }
 
+
 .calendar-header {
+
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
+
+    margin-bottom: 15px;
 }
 
+
 .calendar-header h2 {
+
     margin: 0;
+
     color: #ff3b6b;
+
     font-size: 21px;
 }
 
+
 .calendar-header button {
+
     width: 42px;
+
     height: 42px;
+
     padding: 0;
+
     border-radius: 50%;
+
     background: #ff3b6b;
+
     color: white;
+
     font-size: 27px;
 }
 
+
 .calendar-weekdays,
 .calendar-days {
+
     display: grid;
-    grid-template-columns: repeat(7,1fr);
+
+    grid-template-columns:
+        repeat(7, 1fr);
+
     gap: 5px;
-    margin-top: 12px;
 }
+
 
 .calendar-weekdays span {
+
     font-size: 12px;
+
     font-weight: bold;
+
     color: #ff4d6d;
+
+    padding: 5px 0;
 }
+
+
+.calendar-days {
+
+    margin-top: 5px;
+}
+
 
 .calendar-days button {
+
     padding: 9px 0;
+
     background: white;
+
     color: #555;
+
     font-size: 15px;
+
+    min-width: 0;
 }
 
+
 .calendar-days button.selected {
+
     background: #ff3b6b;
+
     color: white;
 }
 
+
 #selectedDateText {
+
     color: #ff3b6b;
+
     font-weight: bold;
+
+    font-size: 17px;
+
     min-height: 25px;
 }
+
+
+/* NEXT BUTTONS */
 
 #nextDateBtn,
 #foodBtn,
 #instagramBtn {
+
     background: #ff3570;
+
     color: white;
 }
 
+
+/* =========================
+   FOOD
+========================= */
+
 .food-options {
+
     display: flex;
+
     flex-direction: column;
+
     gap: 12px;
+
     margin: 20px 0;
 }
 
+
 .food-options label {
+
     background: #fff0f5;
+
     padding: 14px;
+
     border-radius: 15px;
+
     font-size: 18px;
+
     cursor: pointer;
+
     text-align: left;
 }
 
+
 .food-options input {
+
     margin-right: 10px;
+
     transform: scale(1.3);
 }
 
+
+/* =========================
+   FINAL
+========================= */
+
 #chosenDate,
 #chosenFoods {
+
     color: #ff3b6b;
 }
 
+
 .romantic-message {
+
     line-height: 1.5;
+
     color: #555;
 }
 
+
 </style>
+
 </head>
+
 
 <body>
 
-<!-- FIRST PAGE -->
 
-<div class="container" id="question">
+<!-- =================================
+     PAGE 1
+================================= -->
+
+<div
+    class="container"
+    id="question"
+>
 
     <h1 id="introText"></h1>
+
 
     <div class="buttons">
 
         <button id="yesBtn">
             Yes ❤️
         </button>
+
 
         <button id="noBtn">
             No 😅
@@ -239,264 +416,435 @@ button:hover {
 </div>
 
 
-<!-- CALENDAR PAGE -->
 
-<div class="container hidden" id="datePage">
+<!-- =================================
+     CALENDAR PAGE
+================================= -->
+
+<div
+    class="container hidden"
+    id="datePage"
+>
 
     <h1>
         Okay Jhilik... 😏❤️
     </h1>
 
+
     <p>
         When should we go on our date? 📅
     </p>
 
+
     <div class="calendar">
 
+
         <div class="calendar-header">
+
 
             <button id="prevMonth">
                 ‹
             </button>
 
+
             <h2 id="monthYear"></h2>
+
 
             <button id="nextMonth">
                 ›
             </button>
 
+
         </div>
+
+
 
         <div class="calendar-weekdays">
 
             <span>Sun</span>
+
             <span>Mon</span>
+
             <span>Tue</span>
+
             <span>Wed</span>
+
             <span>Thu</span>
+
             <span>Fri</span>
+
             <span>Sat</span>
 
         </div>
 
+
+
         <div
             class="calendar-days"
-            id="calendarDays">
-        </div>
+            id="calendarDays"
+        ></div>
+
 
     </div>
 
+
+
     <p id="selectedDateText">
+
         Choose a date ❤️
+
     </p>
 
+
+
     <button id="nextDateBtn">
+
         Next ❤️
+
     </button>
+
 
 </div>
 
 
-<!-- FOOD PAGE -->
 
-<div class="container hidden" id="foodPage">
+<!-- =================================
+     FOOD PAGE
+================================= -->
+
+<div
+    class="container hidden"
+    id="foodPage"
+>
+
 
     <h1>
+
         Now, Jhilik... 😏❤️
+
     </h1>
 
+
     <p>
-        What are we eating on our date? 🍽️
+
+        What are we eating
+        on our date? 🍽️
+
     </p>
+
+
 
     <div class="food-options">
 
+
         <label>
-            <input type="checkbox"
-                   value="Momo 🥟">
+
+            <input
+                type="checkbox"
+                value="Momo 🥟"
+            >
+
             🥟 Momo
+
         </label>
 
+
+
         <label>
-            <input type="checkbox"
-                   value="Biriyani 🍲">
+
+            <input
+                type="checkbox"
+                value="Biriyani 🍲"
+            >
+
             🍲 Biriyani
+
         </label>
 
+
+
         <label>
-            <input type="checkbox"
-                   value="Pizza 🍕">
+
+            <input
+                type="checkbox"
+                value="Pizza 🍕"
+            >
+
             🍕 Pizza
+
         </label>
 
+
+
         <label>
-            <input type="checkbox"
-                   value="Chowmein 🍜">
+
+            <input
+                type="checkbox"
+                value="Chowmein 🍜"
+            >
+
             🍜 Chowmein
+
         </label>
 
+
+
         <label>
-            <input type="checkbox"
-                   value="Dessert 🍫">
+
+            <input
+                type="checkbox"
+                value="Dessert 🍫"
+            >
+
             🍫 Dessert
+
         </label>
+
 
     </div>
 
+
+
     <button id="foodBtn">
+
         Okay, let's eat! 😋❤️
+
     </button>
+
 
 </div>
 
 
-<!-- FINAL PAGE
-     IMPORTANT:
-     There is NO final romantic message here.
-     JavaScript creates it only after she reaches this page.
--->
 
-<div class="container hidden" id="finalPage">
+<!-- =================================
+     FINAL PAGE
+     
+     IMPORTANT:
+     The final text is NOT written here.
+     JavaScript creates it only after
+     she selects date + food.
+================================= -->
+
+<div
+    class="container hidden"
+    id="finalPage"
+>
+
 
     <div id="finalContent"></div>
 
+
+
     <button id="instagramBtn">
-        💌 Send to Arup
+
+        💌 Send my answer
+
     </button>
 
+
 </div>
+
 
 
 <script>
 
-/* =========================
+
+/* =================================
    ELEMENTS
-========================= */
+================================= */
 
 const question =
-    document.getElementById("question");
+    document.getElementById(
+        "question"
+    );
+
 
 const yesBtn =
-    document.getElementById("yesBtn");
+    document.getElementById(
+        "yesBtn"
+    );
+
 
 const noBtn =
-    document.getElementById("noBtn");
+    document.getElementById(
+        "noBtn"
+    );
+
 
 const datePage =
-    document.getElementById("datePage");
+    document.getElementById(
+        "datePage"
+    );
+
 
 const foodPage =
-    document.getElementById("foodPage");
+    document.getElementById(
+        "foodPage"
+    );
+
 
 const finalPage =
-    document.getElementById("finalPage");
+    document.getElementById(
+        "finalPage"
+    );
+
 
 const finalContent =
-    document.getElementById("finalContent");
+    document.getElementById(
+        "finalContent"
+    );
+
 
 const nextDateBtn =
-    document.getElementById("nextDateBtn");
+    document.getElementById(
+        "nextDateBtn"
+    );
+
 
 const foodBtn =
-    document.getElementById("foodBtn");
+    document.getElementById(
+        "foodBtn"
+    );
+
 
 const instagramBtn =
-    document.getElementById("instagramBtn");
+    document.getElementById(
+        "instagramBtn"
+    );
 
 
-/* =========================
-   INTRO
-========================= */
+
+/* =================================
+   INTRO TYPING
+================================= */
 
 const introText =
-    document.getElementById("introText");
+    document.getElementById(
+        "introText"
+    );
+
 
 const introMessage =
     "Jhilik... ❤️\nWill you go on a date with me?";
 
+
 let introIndex = 0;
 
+
 function typeIntro() {
+
 
     if (
         introIndex <
         introMessage.length
     ) {
 
+
         if (
-            introMessage[introIndex] ===
-            "\n"
+            introMessage[introIndex]
+            === "\n"
         ) {
 
             introText.innerHTML +=
                 "<br>";
 
-        } else {
+        }
+
+        else {
 
             introText.innerHTML +=
-                introMessage[introIndex];
+                introMessage[
+                    introIndex
+                ];
 
         }
 
+
         introIndex++;
+
 
         setTimeout(
             typeIntro,
             70
         );
+
     }
+
 }
+
 
 typeIntro();
 
 
-/* =========================
+
+/* =================================
    NO BUTTON 😅
-========================= */
+================================= */
 
 const noMessages = [
 
     "No 😅",
+
     "Are you sure? 🥺",
+
     "Really? 😭",
+
     "Think again! 😏",
+
     "Nice try! 😂",
+
     "Nope! ❤️",
+
     "You can't escape! 😜",
+
     "Try again! 🥰"
 
 ];
 
+
 let noCount = 0;
+
 
 function moveNoButton() {
 
-    const maxX =
-        Math.max(
-            10,
-            window.innerWidth -
-            noBtn.offsetWidth -
-            20
-        );
 
-    const maxY =
-        Math.max(
-            10,
-            window.innerHeight -
-            noBtn.offsetHeight -
-            20
-        );
+    const maxX = Math.max(
+
+        10,
+
+        window.innerWidth
+        - noBtn.offsetWidth
+        - 20
+
+    );
+
+
+    const maxY = Math.max(
+
+        10,
+
+        window.innerHeight
+        - noBtn.offsetHeight
+        - 20
+
+    );
+
 
     noBtn.style.position =
         "fixed";
 
+
     noBtn.style.left =
         Math.random() *
-        maxX + "px";
+        maxX +
+        "px";
+
 
     noBtn.style.top =
         Math.random() *
-        maxY + "px";
+        maxY +
+        "px";
+
 
     noBtn.innerText =
         noMessages[
@@ -504,102 +852,132 @@ function moveNoButton() {
             noMessages.length
         ];
 
+
     noCount++;
+
 }
+
+
 
 noBtn.addEventListener(
     "mouseover",
     moveNoButton
 );
 
+
 noBtn.addEventListener(
     "touchstart",
     moveNoButton
 );
 
+
 noBtn.addEventListener(
     "click",
     moveNoButton
 );
 
 
-/* =========================
+
+/* =================================
    YES ❤️
-========================= */
+================================= */
 
 yesBtn.addEventListener(
+
     "click",
+
     function() {
+
 
         question.classList.add(
             "hidden"
         );
 
+
         datePage.classList.remove(
             "hidden"
         );
 
+
         for (
+
             let i = 0;
+
             i < 30;
+
             i++
+
         ) {
 
             createHeart();
 
         }
 
+
         renderCalendar();
 
     }
+
 );
 
 
-/* =========================
-   CALENDAR
-========================= */
+
+/* =================================
+   CALENDAR 📅
+================================= */
 
 const calendarDays =
     document.getElementById(
         "calendarDays"
     );
 
+
 const monthYear =
     document.getElementById(
         "monthYear"
     );
+
 
 const prevMonth =
     document.getElementById(
         "prevMonth"
     );
 
+
 const nextMonth =
     document.getElementById(
         "nextMonth"
     );
+
 
 const selectedDateText =
     document.getElementById(
         "selectedDateText"
     );
 
+
 let calendarDate =
     new Date();
+
 
 let selectedCalendarDate =
     null;
 
 
+
 function renderCalendar() {
 
+
     calendarDays.innerHTML = "";
+
 
     const year =
         calendarDate.getFullYear();
 
+
     const month =
         calendarDate.getMonth();
+
 
     const firstDay =
         new Date(
@@ -608,6 +986,7 @@ function renderCalendar() {
             1
         ).getDay();
 
+
     const daysInMonth =
         new Date(
             year,
@@ -615,62 +994,101 @@ function renderCalendar() {
             0
         ).getDate();
 
+
+
     monthYear.innerText =
+
         new Date(
             year,
             month,
             1
         ).toLocaleDateString(
+
             "en-US",
+
             {
                 month: "long",
+
                 year: "numeric"
             }
+
         );
 
 
+
+    /* EMPTY DAYS */
+
     for (
+
         let i = 0;
+
         i < firstDay;
+
         i++
+
     ) {
 
+
         calendarDays.appendChild(
+
             document.createElement(
                 "div"
             )
+
         );
 
     }
 
 
+
+    /* ACTUAL DAYS */
+
     for (
+
         let day = 1;
+
         day <= daysInMonth;
+
         day++
+
     ) {
+
 
         const button =
             document.createElement(
                 "button"
             );
 
+
         button.type =
             "button";
+
 
         button.innerText =
             day;
 
 
+
+        /* SELECTED DATE */
+
         if (
+
             selectedCalendarDate &&
+
             selectedCalendarDate
-                .getFullYear() === year &&
+                .getFullYear()
+                === year &&
+
             selectedCalendarDate
-                .getMonth() === month &&
+                .getMonth()
+                === month &&
+
             selectedCalendarDate
-                .getDate() === day
+                .getDate()
+                === day
+
         ) {
+
 
             button.classList.add(
                 "selected"
@@ -679,9 +1097,15 @@ function renderCalendar() {
         }
 
 
+
+        /* DATE CLICK */
+
         button.addEventListener(
+
             "click",
+
             function() {
+
 
                 selectedCalendarDate =
                     new Date(
@@ -690,23 +1114,39 @@ function renderCalendar() {
                         day
                     );
 
+
                 selectedDateText.innerText =
+
                     "❤️ Date selected: " +
+
                     selectedCalendarDate
                         .toLocaleDateString(
+
                             "en-US",
+
                             {
-                                weekday: "long",
-                                day: "numeric",
-                                month: "long",
-                                year: "numeric"
+                                weekday:
+                                    "long",
+
+                                day:
+                                    "numeric",
+
+                                month:
+                                    "long",
+
+                                year:
+                                    "numeric"
                             }
+
                         );
+
 
                 renderCalendar();
 
             }
+
         );
+
 
         calendarDays.appendChild(
             button
@@ -717,187 +1157,292 @@ function renderCalendar() {
 }
 
 
-/* MONTH NAVIGATION */
+
+/* PREVIOUS MONTH */
 
 prevMonth.addEventListener(
+
     "click",
+
     function() {
 
+
         calendarDate.setMonth(
-            calendarDate.getMonth() - 1
+
+            calendarDate.getMonth()
+            - 1
+
         );
+
 
         renderCalendar();
 
     }
+
 );
+
+
+
+/* NEXT MONTH */
 
 nextMonth.addEventListener(
+
     "click",
+
     function() {
 
+
         calendarDate.setMonth(
-            calendarDate.getMonth() + 1
+
+            calendarDate.getMonth()
+            + 1
+
         );
+
 
         renderCalendar();
 
     }
+
 );
 
 
-/* =========================
+
+/* =================================
    NEXT DATE
-========================= */
+================================= */
 
 nextDateBtn.addEventListener(
+
     "click",
+
     function() {
 
-        if (!selectedCalendarDate) {
+
+        if (
+            !selectedCalendarDate
+        ) {
+
 
             alert(
                 "Please choose a date ❤️"
             );
 
+
             return;
 
         }
 
+
         datePage.classList.add(
             "hidden"
         );
+
 
         foodPage.classList.remove(
             "hidden"
         );
 
     }
+
 );
 
 
-/* =========================
-   FOOD
-========================= */
+
+/* =================================
+   FOOD 🍽️
+================================= */
 
 foodBtn.addEventListener(
+
     "click",
+
     function() {
+
 
         const foods = [];
 
+
         document.querySelectorAll(
+
             '#foodPage input[type="checkbox"]:checked'
+
         ).forEach(
+
             function(item) {
+
 
                 foods.push(
                     item.value
                 );
 
             }
+
         );
 
 
-        if (foods.length === 0) {
+
+        if (
+            foods.length === 0
+        ) {
+
 
             alert(
+
                 "Jhilik... choose at least one! 😂❤️"
+
             );
+
 
             return;
 
         }
 
 
+
         window.selectedFoods =
             foods;
 
 
-        /*
-         * THE FINAL MESSAGE IS CREATED
-         * ONLY NOW.
-         */
+
+        /* DATE */
 
         const date =
+
             selectedCalendarDate
                 .toLocaleDateString(
+
                     "en-US",
+
                     {
-                        weekday: "long",
-                        day: "numeric",
-                        month: "long",
-                        year: "numeric"
+
+                        weekday:
+                            "long",
+
+                        day:
+                            "numeric",
+
+                        month:
+                            "long",
+
+                        year:
+                            "numeric"
+
                     }
+
                 );
 
 
+
+        /* =================================
+           HER FINAL RESPONSE
+           
+           Created ONLY NOW.
+        ================================= */
+
         finalContent.innerHTML = `
 
-            <div style="font-size:50px;">
-                ❤️
+
+            <div
+                style="
+                    font-size:50px;
+                "
+            >
+                💌
             </div>
 
+
             <h1>
-                DATE ACCEPTED! 🎉
+                Okay Arup... 🥹❤️
             </h1>
 
-            <p>
-                Well Jhilik... you said YES, so...
+
+            <p
+                style="
+                    font-size:20px;
+                "
+            >
+                I guess it's a YES! 😌💕
             </p>
 
-            <h2>
-                NO BACKING OUT NOW! 😏😂
-            </h2>
+
+            <p>
+                You officially got
+                your date. 😂❤️
+            </p>
+
 
             <p>
                 📅 Our date:
             </p>
 
-            <h2 id="finalDate">
+
+            <h2
+                id="chosenDate"
+            >
                 ${date}
             </h2>
 
+
             <p>
-                🍽️ Our food plan:
+                🍽️ I'm craving:
             </p>
 
-            <h3>
+
+            <h3
+                id="chosenFoods"
+            >
                 ${foods.join(", ")}
             </h3>
 
-            <p class="romantic-message">
 
-                Okayyy, Jhilik... 🥹❤️
+            <p
+                class="romantic-message"
+            >
+
+                Now it's your
+                responsibility
+                to plan it properly. 😏❤️
 
                 <br><br>
 
-                So I guess you're officially
-                stuck with me for a date. 😌😂
+                Don't make me regret
+                saying yes. 😂
 
                 <br><br>
 
-                Don't be late...
+                And don't be late...
 
-                I might actually fall for you. 👀💕
+                I'm actually looking
+                forward to it. 👀💕
 
             </p>
+
         `;
+
 
 
         foodPage.classList.add(
             "hidden"
         );
 
+
         finalPage.classList.remove(
             "hidden"
         );
 
 
+
+        /* MORE HEARTS */
+
         for (
+
             let i = 0;
+
             i < 40;
+
             i++
+
         ) {
 
             createHeart();
@@ -905,120 +1450,180 @@ foodBtn.addEventListener(
         }
 
     }
+
 );
 
 
-/* =========================
-   INSTAGRAM
-========================= */
+
+/* =================================
+   SEND MY ANSWER 💌
+================================= */
 
 instagramBtn.addEventListener(
+
     "click",
+
     async function() {
 
+
         const date =
+
             selectedCalendarDate
                 .toLocaleDateString(
+
                     "en-US",
+
                     {
-                        day: "numeric",
-                        month: "long",
-                        year: "numeric"
+
+                        day:
+                            "numeric",
+
+                        month:
+                            "long",
+
+                        year:
+                            "numeric"
+
                     }
+
                 );
 
+
         const foodList =
+
             window.selectedFoods.join(
                 ", "
             );
 
 
+
         const message =
-`Hey Jhilik 😌❤️
 
-Our date is officially booked for ${date}! 🌹
+`Okay Arup... 🥹❤️
 
-Food plan: ${foodList} 🍽️❤️
+I guess it's a YES! 😌💕
 
-No backing out now... you said YES! 😏😂
+Our date is on ${date} 🌹
 
-So, when are you taking me out? 👀💕`;
+And I'm craving ${foodList}! 🍽️❤️
+
+Now it's your responsibility to plan it properly. 😂
+
+Don't be late... I'm actually looking forward to it. 👀💕`;
+
 
 
         try {
 
-            await navigator.clipboard
-                .writeText(message);
+
+            await navigator
+                .clipboard
+                .writeText(
+                    message
+                );
+
 
             alert(
-                "Message copied! ❤️"
+                "My answer is copied! ❤️"
             );
 
-        } catch (error) {
+
+        }
+
+        catch (error) {
+
 
             alert(
-                "Please copy the message manually ❤️"
+                "Please copy my answer manually ❤️"
             );
 
         }
 
 
+
         window.location.href =
+
             "https://www.instagram.com/_allabout.arup_/";
 
     }
+
 );
 
 
-/* =========================
-   FALLING HEARTS
-========================= */
+
+/* =================================
+   FALLING HEARTS ❤️
+================================= */
 
 function createHeart() {
+
 
     const heart =
         document.createElement(
             "div"
         );
 
+
     heart.className =
         "heart";
+
 
     heart.innerHTML =
         "❤️";
 
+
     heart.style.left =
-        Math.random() * 100 +
+
+        Math.random() *
+        100 +
         "vw";
 
+
     heart.style.animationDuration =
+
         (
             3 +
             Math.random() * 4
-        ) + "s";
+
+        ) +
+        "s";
+
 
     heart.style.fontSize =
+
         (
             15 +
             Math.random() * 25
-        ) + "px";
+
+        ) +
+        "px";
+
 
     document.body.appendChild(
         heart
     );
 
+
     setTimeout(
+
         function() {
 
             heart.remove();
 
         },
+
         7000
+
     );
 
 }
 
+
+
+/* INITIAL CALENDAR */
+
 renderCalendar();
+
 
 </script>
 
