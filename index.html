@@ -100,6 +100,74 @@ button {
     font-size: 20px;
     color: #555;
 }
+/* Page 2 - Date Selection */
+#datePage {
+    display: none;
+}
+
+#datePage h1 {
+    font-size: 30px;
+    margin-bottom: 25px;
+}
+
+#dateInput {
+    padding: 14px;
+    font-size: 18px;
+    border: 2px solid #ff4f81;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+#nextDateBtn {
+    padding: 14px 30px;
+    border: none;
+    border-radius: 30px;
+    background: #ff3570;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
+/* Page 3 - Final Page */
+
+#finalPage {
+    display: none;
+}
+
+#finalPage h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+#finalPage p {
+    font-size: 20px;
+    color: #555;
+}
+
+#chosenDate {
+    font-weight: bold;
+    color: #ff4d6d;
+}
+    #instagramBtn {
+    margin-top: 20px;
+    padding: 15px 28px;
+    border: none;
+    border-radius: 30px;
+    background: #ff3b6b;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+#instagramBtn:hover {
+    transform: scale(1.05);
+}
+
+.romantic-message {
+    line-height: 1.5;
+}
 </style>
 </head>
 
@@ -119,14 +187,61 @@ button {
     <p>I knew you would say yes! 💕</p>
     <p>Our date is officially happening! 🌹✨</p>
 </div>
+<div class="container" id="datePage">
 
+    <h1>Yay! 🥰❤️</h1>
+
+    <p>When should we go on our date? 📅</p>
+
+    <input type="date" id="dateInput">
+
+    <br>
+
+    <button id="nextDateBtn">Next ❤️</button>
+
+</div>
+    <div class="container" id="finalPage">
+
+    <div class="big-heart">❤️</div>
+
+    <h1>DATE ACCEPTED! 🎉</h1>
+
+    <p>Well... you said YES, so...</p>
+
+    <h2>NO BACKING OUT NOW! 😏😂</h2>
+
+    <div class="date-card">
+
+        <p>📅 Our date:</p>
+
+        <h2 id="chosenDate"></h2>
+
+    </div>
+
+    <p class="romantic-message">
+        Okayyy, I said YES! 🥹❤️<br><br>
+        So I guess you're officially stuck with me
+        for a date. 😌😂<br><br>
+        Don't be late... I might actually fall for you. 👀💕
+    </p>
+
+    <button id="instagramBtn">
+        💌 Send to Arup
+    </button>
+
+    </div>
 <script>
 
 const noBtn = document.getElementById("noBtn");
 const yesBtn = document.getElementById("yesBtn");
 const question = document.getElementById("question");
 const success = document.getElementById("success");
-
+const datePage = document.getElementById("datePage");
+const dateInput = document.getElementById("dateInput");
+const nextDateBtn = document.getElementById("nextDateBtn");
+const finalPage = document.getElementById("finalPage");
+const chosenDate = document.getElementById("chosenDate");
+const instagramBtn = document.getElementById("instagramBtn");
 const noMessages = [
     "No 😅",
     "Are you sure? 🥺",
@@ -167,14 +282,41 @@ noBtn.addEventListener("click", moveNoButton);
 
 yesBtn.addEventListener("click", function() {
     question.style.display = "none";
-    success.style.display = "block";
+    success.style.display = "none";
+    datePage.style.display = "block";
 
     for(let i = 0; i < 30; i++) {
         createHeart();
     }
 });
+nextDateBtn.addEventListener("click", function() {
+    const selectedDate = dateInput.value;
 
-function createHeart() {
+    if (!selectedDate) {
+        alert("Please choose a date ❤️");
+        return;
+    }
+
+    datePage.style.display = "none";
+finalPage.style.display = "block";
+
+chosenDate.innerText = selectedDate;
+});
+instagramBtn.addEventListener("click", async function() {
+
+    const message = `Hey 😌❤️ I guess our date is officially booked for ${dateInput.value} 😂🌹
+No backing out now... you said YES! 😏❤️
+So, when are you taking me out? 👀`;
+
+    try {
+        await navigator.clipboard.writeText(message);
+        alert("Your message is copied! ❤️ Now just open Instagram and paste it into my DM 😌");
+    } catch (error) {
+        alert("Please copy the message manually ❤️");
+    }
+
+    window.location.href = "https://www.instagram.com/_allabout.arup_/";
+});
 
     const heart = document.createElement("div");
 
